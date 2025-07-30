@@ -45,7 +45,7 @@ Ask me anything about Google tools, AI, community work, or why I’m the perfect
 
 st.divider()
 
-# Generate bot response
+# Response logic
 def generate_reply(user_input):
     user_input = user_input.lower()
 
@@ -85,12 +85,12 @@ def generate_reply(user_input):
     else:
         return "I'm still learning! Try asking about my experience, tools, sessions, or why I'm the best fit for GSA."
 
-# Auto-show initial question and answer
+# Auto-show intro Q&A
 if "chat_history" not in st.session_state:
-    auto_question = "Why is Sheetal Dubey the best fit to be a Google Student Ambassador?"
+    auto_q = "Why is Sheetal Dubey the best fit to be a Google Student Ambassador?"
     st.session_state.chat_history = [
-        ("You", auto_question),
-        ("SheetalBot", generate_reply(auto_question))
+        ("You", auto_q),
+        ("SheetalBot", generate_reply(auto_q))
     ]
 
 # Chat input
@@ -98,19 +98,31 @@ user_input = st.chat_input("Ask SheetalBot anything...")
 
 if user_input:
     st.session_state.chat_history.append(("You", user_input))
-    bot_reply = generate_reply(user_input)
-    st.session_state.chat_history.append(("SheetalBot", bot_reply))
+    response = generate_reply(user_input)
+    st.session_state.chat_history.append(("SheetalBot", response))
 
-# Display conversation
+# Show chat + voice
 for sender, message in st.session_state.chat_history:
     if sender == "You":
         st.markdown(f"<div style='color:#EA4335;'><strong>You:</strong> {message}</div>", unsafe_allow_html=True)
     else:
         st.markdown(f"<div style='color:#4285F4;'><strong>🤖 SheetalBot:</strong> {message}</div>", unsafe_allow_html=True)
 
+        # 🎤 Bot speaks using browser's Web Speech API
+        st.markdown(f"""
+            <script>
+                var msg = new SpeechSynthesisUtterance({repr(message)});
+                msg.pitch = 1;
+                msg.rate = 1;
+                msg.volume = 1;
+                msg.lang = 'en-IN';
+                window.speechSynthesis.speak(msg);
+            </script>
+        """, unsafe_allow_html=True)
+
 # Footer
 st.markdown("""
 <div class="footer">
-Made with ❤️ using Streamlit · Inspired by Google's mission to make information universally accessible & useful
+Made with ❤️ using Streamlit · Powered by Google inspiration · Sheetal Dubey for GSA 2025
 </div>
 """, unsafe_allow_html=True)
