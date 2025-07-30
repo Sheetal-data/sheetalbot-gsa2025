@@ -38,59 +38,59 @@ st.markdown("""
 st.title("🤖 SheetalBot – Your Google Student Ambassador 2025")
 st.markdown("""
 <div style="color:#0F9D58; font-size:18px;">
-Hi, I’m <strong>SheetalBot</strong> – the virtual version of <strong>Sheetal Pandey</strong> 👩‍💻  
+Hi, I’m <strong>SheetalBot</strong> – the virtual version of <strong>Sheetal Dubey</strong> 👩‍💻  
 Ask me anything about Google tools, AI, community work, or why I’m the perfect fit to be your <strong>Google Student Ambassador 2025</strong>!
 </div>
 """, unsafe_allow_html=True)
 
 st.divider()
 
-# Auto-display question and answer on load
+# Generate bot response
 def generate_reply(user_input):
     user_input = user_input.lower()
 
-    if "who are you" in user_input or "your name" in user_input:
-        return "I’m SheetalBot – your friendly tech guide, built by Sheetal Pandey, a passionate, community-driven data professional applying to be your Google Student Ambassador 2025! 😊"
+    if "best fit" in user_input or "why" in user_input:
+        return (
+            "I'm excited to be a Google Student Ambassador because of the work I’ve already done at the intersection of tech, education, and community impact.\n\n"
+            "👩‍🏫 **Community Leadership**: I’ve organized health education events to raise awareness in underserved communities — this shows my ability to lead, educate, and create real-world impact.\n\n"
+            "💻 **Tech Educator**: I’ve mentored over 50+ peers, helping them gain hands-on skills in Google Sheets, Gemini, Meet, and other digital tools. I’ve led workshops on data analytics, AI, automation, and problem-solving — empowering others with confidence and clarity.\n\n"
+            "🌍 **Diverse Work Experience**: From working at Collegedunia to Evolent Health and freelance roles, I’ve tackled real business challenges, automated workflows, and visualized insights — always bringing value and innovation.\n\n"
+            "🚀 **AI & Google Tools Advocate**: I actively help people integrate Google tools and AI (like Gemini) into their daily lives — from resume writing to automation — in ways that are responsible and impactful.\n\n"
+            "💡 **My Mission as a GSA**: I want to make digital literacy and AI skills accessible to every student — especially those from non-tech backgrounds or underserved regions.\n\n"
+            "**That’s why I believe I’m not just a good fit — I’m the right fit to represent students as a Google Student Ambassador 2025.**"
+        )
 
-    elif "why gsa" in user_input or "ambassador" in user_input or "best fit" in user_input:
-        return ("My journey began with organizing health education events that built awareness in local communities. That experience taught me how to lead, communicate, and drive impact. "
-                "Later, at Collegedunia and Evolent Health, and as a freelance analyst, I mentored over 50 peers in using Google Sheets, Gemini, and Meet to solve real-world problems like automation, analysis, and reporting. "
-                "As a Student Ambassador, I want to combine my passion for outreach and my technical expertise to make digital tools approachable, inclusive, and empowering for every student.")
+    elif "who are you" in user_input or "your name" in user_input:
+        return "I’m SheetalBot – your friendly tech guide, built by Sheetal Dubey, a community-first, data-driven GSA aspirant! 😊"
 
-    elif "experience" in user_input or "what have you done" in user_input:
-        return ("I've worked at Collegedunia, Evolent Health, and freelanced with Highbrow Tech and others. I’ve built dashboards, automated ETL pipelines, and supported privacy-compliant data analysis. "
-                "I’ve also hosted community education drives and tech workshops — helping students and professionals alike become confident with data and AI tools.")
-
-    elif "favorite google tool" in user_input or "fav tool" in user_input:
-        return "Google Sheets! 📊 I use it to teach automation, create visual dashboards, and simplify complex reporting workflows. It’s powerful, accessible, and a great teaching tool."
-
-    elif "ai" in user_input or "gemini" in user_input:
-        return ("I love introducing students to AI tools like Gemini. I’ve helped peers write better resumes, brainstorm project ideas, and automate everyday work using Gemini responsibly and creatively.")
+    elif "experience" in user_input:
+        return ("I've worked with Collegedunia, Evolent Health, and freelance clients. I’ve created dashboards, automated ETL pipelines, and supported data privacy. "
+                "I've also hosted workshops and community sessions to spread awareness of health, data, and digital empowerment.")
 
     elif "tools" in user_input:
-        return ("I regularly use Google Sheets, Docs, Meet, Forms, and Gemini. I’ve integrated them into workshops, personal projects, and mentoring sessions to show how even basic tools can create big impact.")
+        return "I love Google Sheets, Docs, Forms, Meet, and Gemini! I use them for mentoring, reporting, automating, and teaching."
+
+    elif "ai" in user_input or "gemini" in user_input:
+        return "I'm passionate about AI! I guide students in using Gemini for smarter research, automation, idea generation, and personal growth."
 
     elif "sessions" in user_input or "events" in user_input:
-        return ("I’ve led sessions on web scraping, Sheets automation, and using Gemini for students. Previously, I also conducted health education events in underserved areas — showing my long-standing commitment to empowering others.")
-
-    elif "real" in user_input:
-        return "Well, I’m a bot — but Sheetal Pandey is very real. And she’s driven, community-minded, and ready to represent students as a GSA 2025. 🚀"
+        return "I’ve led workshops on Google Sheets, data scraping, AI tools, and digital problem solving. I also organized community education events in health and wellness."
 
     elif "hi" in user_input or "hello" in user_input:
-        return "Hey there! 👋 Ready to chat about tech, community, and why I’d love to be your Google Student Ambassador."
+        return "Hello! 👋 I’m SheetalBot. Ask me anything about Sheetal Dubey’s journey or tools she uses to drive impact!"
 
-    elif "bye" in user_input or "goodbye" in user_input:
-        return "Goodbye! I hope we connect again soon — maybe through the GSA community! 💙💛💚❤️"
+    elif "bye" in user_input:
+        return "Thanks for chatting! Hope to connect again — maybe through the GSA network! 🌐"
 
     else:
-        return "I’m still learning! Try asking about Google tools, AI, community work, or what makes Sheetal Pandey the right fit for GSA 2025."
+        return "I'm still learning! Try asking about my experience, tools, sessions, or why I'm the best fit for GSA."
 
-# Show auto-question and answer on load
+# Auto-show initial question and answer
 if "chat_history" not in st.session_state:
-    initial_question = "Why is Sheetal the best fit to be a Google Student Ambassador?"
+    auto_question = "Why is Sheetal Dubey the best fit to be a Google Student Ambassador?"
     st.session_state.chat_history = [
-        ("You", initial_question),
-        ("SheetalBot", generate_reply(initial_question))
+        ("You", auto_question),
+        ("SheetalBot", generate_reply(auto_question))
     ]
 
 # Chat input
@@ -101,7 +101,7 @@ if user_input:
     bot_reply = generate_reply(user_input)
     st.session_state.chat_history.append(("SheetalBot", bot_reply))
 
-# Display the conversation
+# Display conversation
 for sender, message in st.session_state.chat_history:
     if sender == "You":
         st.markdown(f"<div style='color:#EA4335;'><strong>You:</strong> {message}</div>", unsafe_allow_html=True)
