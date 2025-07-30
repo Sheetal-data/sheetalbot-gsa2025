@@ -47,7 +47,7 @@ st.markdown("""
 st.title("🤖 SheetalBot – Your Google Student Ambassador 2025")
 st.markdown("""
 <div style="color:#0F9D58; font-size:18px;">
-Hi, I’m <strong>SheetalBot</strong> – the virtual version of <strong>Sheetal Pandey</strong> 👩‍💻
+Hi, I’m <strong>SheetalBot</strong> – the virtual version of <strong>Sheetal Dubey</strong> 👩‍💻
 Ask me anything about Google tools, AI, student communities, or why I’m the perfect fit to be a <strong>Google Student Ambassador 2025</strong>!
 </div>
 """, unsafe_allow_html=True)
@@ -63,7 +63,7 @@ def generate_reply(user_input):
     user_input = user_input.lower()
 
     if "who are you" in user_input or "your name" in user_input:
-        return "I’m SheetalBot – your friendly tech guide, built by Sheetal Pandey, a passionate, community-driven student applying to be your Google Student Ambassador 2025! 😊"
+        return "I’m SheetalBot – your friendly tech guide, built by Sheetal Dubey, a passionate, community-driven student applying to be your Google Student Ambassador 2025! 😊"
 
     elif "why gsa" in user_input or "ambassador" in user_input:
         return ("Because I bridge students and technology. I empower my peers through workshops, Google tool training, and AI-powered mentoring. "
