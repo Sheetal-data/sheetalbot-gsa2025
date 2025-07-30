@@ -45,18 +45,14 @@ Ask me anything about Google tools, AI, community work, or why I’m the perfect
 
 st.divider()
 
-# Store chat history
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
-
-# Chatbot reply logic
+# Auto-display question and answer on load
 def generate_reply(user_input):
     user_input = user_input.lower()
 
     if "who are you" in user_input or "your name" in user_input:
         return "I’m SheetalBot – your friendly tech guide, built by Sheetal Pandey, a passionate, community-driven data professional applying to be your Google Student Ambassador 2025! 😊"
 
-    elif "why gsa" in user_input or "ambassador" in user_input:
+    elif "why gsa" in user_input or "ambassador" in user_input or "best fit" in user_input:
         return ("My journey began with organizing health education events that built awareness in local communities. That experience taught me how to lead, communicate, and drive impact. "
                 "Later, at Collegedunia and Evolent Health, and as a freelance analyst, I mentored over 50 peers in using Google Sheets, Gemini, and Meet to solve real-world problems like automation, analysis, and reporting. "
                 "As a Student Ambassador, I want to combine my passion for outreach and my technical expertise to make digital tools approachable, inclusive, and empowering for every student.")
@@ -88,6 +84,14 @@ def generate_reply(user_input):
 
     else:
         return "I’m still learning! Try asking about Google tools, AI, community work, or what makes Sheetal Pandey the right fit for GSA 2025."
+
+# Show auto-question and answer on load
+if "chat_history" not in st.session_state:
+    initial_question = "Why is Sheetal the best fit to be a Google Student Ambassador?"
+    st.session_state.chat_history = [
+        ("You", initial_question),
+        ("SheetalBot", generate_reply(initial_question))
+    ]
 
 # Chat input
 user_input = st.chat_input("Ask SheetalBot anything...")
